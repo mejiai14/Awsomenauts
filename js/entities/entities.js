@@ -41,6 +41,7 @@ game.PlayerEntity = me.Entity.extend({
     setFlags: function(){
         this.facing = "right";
         this.dead = false;
+        this.attacking = false;
     },
     
     addAnimation: function(){
@@ -56,19 +57,7 @@ game.PlayerEntity = me.Entity.extend({
         
         this.checkKeyPressesAndMove();
         
-        if(me.input.isKeyPressed("attack")){
-            if(!this.renderable.isCurrentAnimation("attack")){
-                this.renderable.setCurrentAnimation("attack", "idle");
-                this.renderable.setAnimationFrame();
-            }
-        }
-        else if(this.body.vel.x !== 0 && !this.renderable.isCurrentAnimation("attack")){
-        if(!this.renderable.isCurrentAnimation("walk")) {
-            this.renderable.setCurrentAnimation("walk");
-        }
-    }else if(!this.renderable.isCurrentAnimation("attack")){
-        this.renderable.setCurrentAnimation("idle");
-    }
+        this.setAnimation();
         
         me.collision.check(this, true, this.collideHandler.bind(this), true);
         this.body.update(delta);     
@@ -96,6 +85,8 @@ game.PlayerEntity = me.Entity.extend({
         if(me.input.isKeyPressed("jump") && !this.jumping && !this.falling){
             this.jump();
         }
+        
+        this.attacking = me.input.isKeyPressed("attack")
     },
     
     moveRight: function(){
@@ -113,6 +104,22 @@ game.PlayerEntity = me.Entity.extend({
     jump: function(){
         this.jumping = true;
             this.body.vel.y -= this.body.accel.y * me.timer.tick;
+    },
+    
+    setAnimation: function(){
+        if(this.attacking){
+            if(!this.renderable.isCurrentAnimation("attack")){
+                this.renderable.setCurrentAnimation("attack", "idle");
+                this.renderable.setAnimationFrame();
+            }
+        }
+        else if(this.body.vel.x !== 0 && !this.renderable.isCurrentAnimation("attack")){
+        if(!this.renderable.isCurrentAnimation("walk")) {
+            this.renderable.setCurrentAnimation("walk");
+        }
+    }else if(!this.renderable.isCurrentAnimation("attack")){
+        this.renderable.setCurrentAnimation("idle");
+    }
     },
     
     loseHealth: function(damage){
