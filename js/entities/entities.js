@@ -13,7 +13,7 @@ game.PlayerEntity = me.Entity.extend({
             this.renderable.setCurrentAnimation("idle");
     },
     
-    setSuper: function(){
+    setSuper: function(x, y){
         this._super(me.Entity, 'init', [x, y, {
             image: "player",    
             width: 64,    
@@ -53,7 +53,7 @@ game.PlayerEntity = me.Entity.extend({
     update: function(delta){
         this.now = new Date().getTime();
         
-        this.dead = checkIfDead();
+        this.dead = this.checkIfDead();
         
         this.checkKeyPressesAndMove();
         
@@ -130,7 +130,7 @@ game.PlayerEntity = me.Entity.extend({
         if(response.b.type==='EnemyBaseEntity'){
         this.collideWithEnemyBase(response);
         }else if(response.b.type==='EnemyCreep'){
-            collideWithEnemyCreep(response);
+            this.collideWithEnemyCreep(response);
         }
     },
     
