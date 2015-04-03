@@ -52,28 +52,9 @@ game.PlayerEntity = me.Entity.extend({
     update: function(delta){
         this.now = new Date().getTime();
         
-        if (this.health <= 0){
-            this.dead = true;
-        }
+        this.dead = checkIfDead();
         
-        if(me.input.isKeyPressed("right")){
-            
-            this.body.vel.x += this.body.accel.x * me.timer.tick;
-            this.facing = "right";
-            this.flipX(true);
-        }else if(me.input.isKeyPressed("left")){
-            this.body.vel.x -= this.body.accel.x * me.timer.tick;
-            this.facing = "left";
-            this.flipX(false);
-        }else{
-            this.body.vel.x = 0;      
-        }
-        
-        if(me.input.isKeyPressed("jump") && !this.jumping && !this.falling){
-            this.jumping = true;
-            this.body.vel.y -= this.body.accel.y * me.timer.tick;
-        }
-        
+        this.checkKeyPressesAndMove();
         
         if(me.input.isKeyPressed("attack")){
             if(!this.renderable.isCurrentAnimation("attack")){
@@ -94,6 +75,44 @@ game.PlayerEntity = me.Entity.extend({
         
         this._super(me.Entity, "update", [delta]);
         return true;
+    },
+    
+    checkIfDead: function(){
+        if (this.health <= 0){
+            return true;
+        }
+        return false;
+    },
+    
+    checkKeyPressesAndMove: function(){
+        if(me.input.isKeyPressed("right")){
+            this.moveRight();
+        }else if(me.input.isKeyPressed("left")){
+            this.moveLeft();
+        }else{
+            this.body.vel.x = 0;      
+        }
+        
+        if(me.input.isKeyPressed("jump") && !this.jumping && !this.falling){
+            this.jump();
+        }
+    },
+    
+    moveRight: function(){
+        this.body.vel.x += this.body.accel.x * me.timer.tick;
+            this.facing = "right";
+            this.flipX(true);
+    },  
+    
+    moveLeft: function(){
+        this.body.vel.x -= this.body.accel.x * me.timer.tick;
+            this.facing = "left";
+            this.flipX(false);
+    },
+    
+    jump: function(){
+        this.jumping = true;
+            this.body.vel.y -= this.body.accel.y * me.timer.tick;
     },
     
     loseHealth: function(damage){
