@@ -5,8 +5,10 @@
         <group>
             <file>file:/C:/xampp/htdocs/Ismael'sAwsomenauts/js/screens/play.js</file>
             <file>file:/C:/xampp/htdocs/Ismael'sAwsomenauts/js/game.js</file>
-            <file>file:/C:/xampp/htdocs/Ismael'sAwsomenauts/js/entities/entities.js</file>
+            <file>file:/C:/xampp/htdocs/Ismael'sAwsomenauts/js/screens/title.js</file>
             <file>file:/C:/xampp/htdocs/Ismael'sAwsomenauts/js/entities/GameManager.js</file>
+            <file>file:/C:/xampp/htdocs/Ismael'sAwsomenauts/js/entities/PlayerBaseEntity.js</file>
+            <file>file:/C:/xampp/htdocs/Ismael'sAwsomenauts/js/entities/EnemyBaseEntity.js</file>
         </group>
     </open-files>
 </project-private>
