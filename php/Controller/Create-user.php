@@ -14,7 +14,7 @@
     $query = $_SESSION["connection"]->query("INSERT INTO users SET "
             . "email = '', "
             . "username = '$username', "
-            . "password = '$hashedPassword', "
+            . "password = '$Password', "
             . "salt = '$salt', "
             . "exp = 0, "
             . "exp1 = 0, "
