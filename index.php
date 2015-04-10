@@ -96,27 +96,6 @@ require_once("php/controller/create-db.php");
                 $("#mainmenu").bind("click", function(){
                     me.state.change(me.state.MENU);
                 });
-                $("#register").bind("click", function(){
-                    $.ajax({
-                        type: "POST",
-                        url: "php/coontroller/create-user.php",
-                        data: {
-                            username: $('#username').val(),
-                            password: $('#password').val()
-                        },
-                        dataType: "text"
-                    })
-                    .success(function(response){
-                        if(response==="true"){
-                            me.state.change(me.state.PLAY);
-                        }else{
-                            alert(response);
-                        }        
-                      })
-                    .fail(function(response){
-                        alert("Fail");
-                    });
-                });
                 
                 $("#load").bind("click", function(){
                     $.ajax({

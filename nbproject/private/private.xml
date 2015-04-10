@@ -3,13 +3,12 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/xampp/htdocs/Ismael'sAwsomenauts/php/Controller/save-user.php</file>
+            <file>file:/C:/xampp/htdocs/Ismael'sAwsomenauts/js/screens/spendExp.js</file>
             <file>file:/C:/xampp/htdocs/Ismael'sAwsomenauts/index.php</file>
-            <file>file:/C:/xampp/htdocs/Ismael'sAwsomenauts/js/screens/newProfile.js</file>
+            <file>file:/C:/xampp/htdocs/Ismael'sAwsomenauts/js/gamemanagers/GameManager.js</file>
+            <file>file:/C:/xampp/htdocs/Ismael'sAwsomenauts/php/Controller/Create-db.php</file>
             <file>file:/C:/xampp/htdocs/Ismael'sAwsomenauts/php/Controller/login-user.php</file>
             <file>file:/C:/xampp/htdocs/Ismael'sAwsomenauts/js/screens/loadProfile.js</file>
-            <file>file:/C:/xampp/htdocs/Ismael'sAwsomenauts/index.css</file>
-            <file>file:/C:/xampp/htdocs/Ismael'sAwsomenauts/php/Model/config.php</file>
             <file>file:/C:/xampp/htdocs/Ismael'sAwsomenauts/php/Controller/Create-user.php</file>
         </group>
     </open-files>
