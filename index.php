@@ -53,7 +53,7 @@ require_once("php/controller/create-db.php");
                 <script type="text/javascript" src="js/gamemanagers/GameManager.js"></script>
                 <script type="text/javascript" src="js/gamemanagers/GameTimerManager.js"></script>
                 <script type="text/javascript" src="js/gamemanagers/SpendGold.js"></script>
-                <script type="text/javascript" src="js/gamemanagers/DeathManager.js"></script>
+                <script type="text/javascript" src="js/gamemanagers/HeroDeathManager.js"></script>
                 <script type="text/javascript" src="js/entities/EnemyBaseEntity.js"></script>
                 <script type="text/javascript" src="js/entities/PlayerBaseEntity.js"></script>
                 <script type="text/javascript" src="js/entities/EnemyCreep.js"></script>
@@ -96,11 +96,32 @@ require_once("php/controller/create-db.php");
                 $("#mainmenu").bind("click", function(){
                     me.state.change(me.state.MENU);
                 });
+                $("#register").bind("click", function(){
+                    $.ajax({
+                        type: "POST",
+                        url: "php/controller/create-user.php",
+                        data: {
+                            username: $('#username').val(),
+                            password: $('#password').val()
+                        },
+                        dataType: "text"
+                    })
+                    .success(function(response){
+                        if(response==="true"){
+                            me.state.change(me.state.PLAY);
+                        }else{
+                            alert(response);
+                        }        
+                      })
+                    .fail(function(response){
+                        alert("Fail");
+                    });
+                });
                 
                 $("#load").bind("click", function(){
                     $.ajax({
                         type: "POST",
-                        url: "php/coontroller/login-user.php",
+                        url: "php/controller/login-user.php",
                         data: {
                             username: $('#username').val(),
                             password: $('#password').val()
