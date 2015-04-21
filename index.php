@@ -58,6 +58,7 @@ require_once("php/controller/create-db.php");
                 <script type="text/javascript" src="js/entities/PlayerBaseEntity.js"></script>
                 <script type="text/javascript" src="js/entities/EnemyCreep.js"></script>
 		<script type="text/javascript" src="js/entities/HUD.js"></script>
+                <script type="text/javascript" src="js/entities/SpearThrow.js"></script>
 
 		<script type="text/javascript" src="js/screens/title.js"></script>
 		<script type="text/javascript" src="js/screens/play.js"></script>
@@ -139,7 +140,7 @@ require_once("php/controller/create-db.php");
                             game.data.exp3 = data["exp3"];
                             game.data.exp4 = data["exp4"];
                             
-                            me.state.change(me.state.SPENDEXP)
+                            me.state.change(me.state.SPENDEXP);
                         }        
                     })
                     .fail(function(response){

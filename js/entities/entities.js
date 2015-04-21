@@ -104,19 +104,21 @@ game.PlayerEntity = me.Entity.extend({
     },
     
     checkAbilityKeys: function(){
-        if(me.input.isKeyPressed("skill1")){
+        if(me.input.isKeyPressed("Skill1")){
             this.speedBurst();
-        }else if(me.input.isKeyPressed("skill2")){
+        }else if(me.input.isKeyPressed("Skill2")){
             this.eatCreep();
-        }else if(me.input.isKeyPressed("skill3")){
+        }else if(me.input.isKeyPressed("Skill3")){
             this.throwSpear();
         }
     },
     
     throwSpear: function(){
+        console.log(this.now + " " + this.lastSpear + " " + game.data.ability3);
         if((this.now-this.lastSpear) >= game.data.spearTimer*1000 && game.data.ability3 > 0){
+            console.log("thrown");
             this.lastSpear = this.now;
-            var spear = me.pool.pull("spear", this.pos.x, this.pos.y, {});
+            var spear = me.pool.pull("spear", this.pos.x, this.pos.y, {}, this.facing);
             me.game.world.addChild(spear, 10);
         }
     },
