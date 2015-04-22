@@ -36,6 +36,10 @@ game.PlayScreen = me.ScreenObject.extend({
 		// add our HUD to the game world
 		this.HUD = new game.HUD.Container();
 		me.game.world.addChild(this.HUD);
+                
+                // play the audio track
+                me.audio.playTrack("DST-InertExponent");
+ 
 	},
 
 
@@ -45,6 +49,9 @@ game.PlayScreen = me.ScreenObject.extend({
 	onDestroyEvent: function() {
 		// remove the HUD from the game world
 		me.game.world.removeChild(this.HUD);
+                
+                // stop the current audio track
+                me.audio.stopTrack();
 	},
         
         resetPlayer: function(x, y){
@@ -53,5 +60,5 @@ game.PlayScreen = me.ScreenObject.extend({
                 game.data.miniPlayer = me.pool.pull("miniPlayer", 10, 10, {});
                 me.game.world.addChild(game.data.miniPlayer, 31);
         }
-        
+    
 });

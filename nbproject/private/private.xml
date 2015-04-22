@@ -5,11 +5,13 @@
         <group>
             <file>file:/C:/xampp/htdocs/Ismael'sAwsomenauts/js/screens/play.js</file>
             <file>file:/C:/xampp/htdocs/Ismael'sAwsomenauts/js/resources.js</file>
-            <file>file:/C:/xampp/htdocs/Ismael'sAwsomenauts/js/game.js</file>
+            <file>file:/C:/xampp/htdocs/Ismael'sAwsomenauts/data/img/wizard.png</file>
+            <file>file:/C:/xampp/htdocs/Ismael'sAwsomenauts/js/entities/EnemyWizard.js</file>
+            <file>file:/C:/xampp/htdocs/Ismael'sAwsomenauts/js/entities/EnemyCreep.js</file>
             <file>file:/C:/xampp/htdocs/Ismael'sAwsomenauts/index.php</file>
-            <file>file:/C:/xampp/htdocs/Ismael'sAwsomenauts/js/gamemanagers/HeroDeathManager.js</file>
-            <file>file:/C:/xampp/htdocs/Ismael'sAwsomenauts/js/entities/MiniMap.js</file>
-            <file>file:/C:/xampp/htdocs/Ismael'sAwsomenauts/js/entities/MiniPlayerLocation.js</file>
+            <file>file:/C:/xampp/htdocs/Ismael'sAwsomenauts/js/entities/entities.js</file>
+            <file>file:/C:/xampp/htdocs/Ismael'sAwsomenauts/data/img/archer.png</file>
+            <file>file:/C:/xampp/htdocs/Ismael'sAwsomenauts/js/entities/TeamArcher.js</file>
         </group>
     </open-files>
 </project-private>

@@ -17,6 +17,8 @@ game.resources = [
         {name: "new-screen", type:"image", src: "data/img/newpic.png"},
         {name: "spear", type:"image", src: "data/img/spear.png"},
         {name: "minimap", type:"image", src: "data/img/minimap.png"},
+        {name: "wizard", type:"image", src: "data/img/wizard.png"},
+        {name: "archer", type:"image", src: "data/img/archer.png"},
         
 
 	/* Atlases 
