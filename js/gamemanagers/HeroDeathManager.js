@@ -7,6 +7,7 @@ game.HeroDeathManager = Object.extend({
         if(game.data.player.dead){
             me.game.world.removeChild(game.data.player);
             me.state.current().resetPlayer(10, 0);
+            me.game.world.removeChild(game.data.miniPlayer);
         }
         
         return true;
