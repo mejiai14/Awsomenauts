@@ -63,6 +63,7 @@ require_once("php/controller/create-db.php");
                 <script type="text/javascript" src="js/entities/MiniPlayerLocation.js"></script>
                 <script type="text/javascript" src="js/entities/EnemyWizard.js"></script>
                 <script type="text/javascript" src="js/entities/TeamArcher.js"></script>
+                <script type="text/javascript" src="js/entities/ShootArrow.js"></script>
 
 		<script type="text/javascript" src="js/screens/title.js"></script>
 		<script type="text/javascript" src="js/screens/play.js"></script>

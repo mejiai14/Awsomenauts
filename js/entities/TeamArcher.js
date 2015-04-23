@@ -1,4 +1,4 @@
-game.ArcherTeam = me.Entity.extend({
+game.TeamArcher = me.Entity.extend({
     init: function(x, y, settings){
         this._super(me.Entity, 'init', [x, y, {
                 image: "archer",
@@ -51,30 +51,50 @@ game.ArcherTeam = me.Entity.extend({
     },
     
     collideHandler: function(response){
-        if(response.b.type==='EnemyBase'){
-            this.attacking=true;
-            this.lastAttacking=this.now;
-            this.body.vel.x = 0;
-            this.pos.x = this.pos.x + 1;
-            if((this.now-this.lastHit >=1000)){
-                this.lastHit = this.now;
-                response.b.loseHealth(game.data.enemyCreepAttack);
-            }
-            
-        }else if (response.b.type==='PlayerEntity'){
-            var xdif = this.pos.x - response.b.pos.x;
-            
-            this.attacking=true;
-            
-           
-            if(xdif>0){
-            this.pos.x = this.pos.x + 1;
-            this.body.vel.x = 0;
-            }
-            if((this.now-this.lastHit >=1000) && xdif>0){
-                this.lastHit = this.now;
-                response.b.loseHealth(game.data.enemyCreepAttack);
-            }
+        if(response.b.type==='EnemyBaseEntity'){
+        this.collideWithEnemyBase(response);
+        }else if(response.b.type==='EnemyCreep'){
+            this.collideWithEnemyCreep(response);
         }
+    },
+    
+    collideWithEnemyBase: function(response){
+        var ydif = this.pos.y - response.b.pos.y;
+        var xdif = this.pos.x - response.b.pos.x;
+        
+        if(ydif<-40 && xdif<70 && xdif>-35){
+                this.body.falling = false;
+        }        
+        else if(xdif>-35 && this.facing === 'right' && (xdif<0)){
+            this.body.vel.x = 0;
+            this.pos.x = this.pos.x -1;
+        }else if(xdif<70 && this.facing==='left'&& xdif>0){
+            this.body.vel.x = 0;
+            }
+            
+            if(this.renderable.isCurrentAnimation("attack") && this.now-this.lastHit >= game.data.playerAttackTimer){  
+                this.lastHit = this.now;
+                response.b.loseHealth(game.data.playerAttack);
+            }
+    },
+    
+    collideWithEnemyCreep: function(response){
+        
+            var xdif = this.pos.x - response.b.pos.x;
+            var ydif = this.pos.y - response.b.pos.y;
+            
+            this.stopMovement(xdif);
+            
+            if(this.checkAttack(xdif, ydif)){
+                this.hitCreep(response);
+            };
+    },
+    
+    hitCreep: function(response){
+            if(response.b.health <= game.data.playerAttack){
+                
+                }                
+                
+                response.b.loseHealth(game.data.playerAttack);
     }
 });

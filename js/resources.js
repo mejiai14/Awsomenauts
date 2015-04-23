@@ -19,6 +19,7 @@ game.resources = [
         {name: "minimap", type:"image", src: "data/img/minimap.png"},
         {name: "wizard", type:"image", src: "data/img/wizard.png"},
         {name: "archer", type:"image", src: "data/img/archer.png"},
+        {name: "arrow", type:"image", src: "data/img/arrow.png"},
         
 
 	/* Atlases 
