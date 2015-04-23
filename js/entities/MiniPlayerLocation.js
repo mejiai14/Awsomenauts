@@ -33,7 +33,7 @@ game.MiniPlayerLocation = me.Entity.extend({
         }]);
     },
     
-    draw: function(){
+    draw: function(renderer){
         this._super(me.Entity, "draw", [renderer]);
         this.floating = true;
         renderer.drawImage(
@@ -44,8 +44,8 @@ game.MiniPlayerLocation = me.Entity.extend({
     },
     
     update: function(){
-        this.pos.x = (10 + (game.data.player.pos.x *0.062));
-        this.pos.xy = (10 + (game.data.player.pos.y *0.06));
+        this.pos.x = (10 + (game.data.player.pos.x *0.25));
+        this.pos.y = (10 + (game.data.player.pos.y *0.25));
         return true;
     }
 });
