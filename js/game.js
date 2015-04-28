@@ -92,6 +92,8 @@ var game = {
                 me.pool.register("spear", game.SpearThrow, true);
                 me.pool.register("minimap", game.MiniMap, true);
                 me.pool.register("miniplayer", game.MiniPlayerLocation, true);
+                me.pool.register("wizard", game.EnemyWizard, true);
+                me.pool.register("archer", game.TeamArcher, true);
             
 		me.state.set(me.state.MENU, new game.TitleScreen());
 		me.state.set(me.state.PLAY, new game.PlayScreen());

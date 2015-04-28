@@ -2,12 +2,12 @@ game.TeamArcher = me.Entity.extend({
     init: function(x, y, settings){
         this._super(me.Entity, 'init', [x, y, {
                 image: "archer",
-                width: 32,
+                width: 64,
                 height: 64,        
-                spritewidth: "32",         
+                spritewidth: "64",         
                 spriteheight: "64",
                 getShape: function(){
-                    return (new me.Rect(0, 0, 32, 64)).toPolygon();
+                    return (new me.Rect(0, 0, 64, 64)).toPolygon();
                 }
         }]);
         this.health = 10;
@@ -18,9 +18,10 @@ game.TeamArcher = me.Entity.extend({
         this.now = new Date().getTime();
         this.body.setVelocity(3, 20);
         
-        this.type = "archer";
+        this.type = "TeamArcher";
         
-        this.renderable.addAnimation("walk", [3, 4, 5], 80);
+        this.renderable.addAnimation("attack", [260, 261, 262, 263, 264, 265, 266, 267, 268, 269, 270, 271, 272], 80);
+        this.renderable.addAnimation("walk", [156, 157, 158, 159, 160, 161, 162, 163, 164], 80);
         this.renderable.setCurrentAnimation("walk");
         
     },
@@ -51,50 +52,30 @@ game.TeamArcher = me.Entity.extend({
     },
     
     collideHandler: function(response){
-        if(response.b.type==='EnemyBaseEntity'){
-        this.collideWithEnemyBase(response);
-        }else if(response.b.type==='EnemyCreep'){
-            this.collideWithEnemyCreep(response);
-        }
-    },
-    
-    collideWithEnemyBase: function(response){
-        var ydif = this.pos.y - response.b.pos.y;
-        var xdif = this.pos.x - response.b.pos.x;
-        
-        if(ydif<-40 && xdif<70 && xdif>-35){
-                this.body.falling = false;
-        }        
-        else if(xdif>-35 && this.facing === 'right' && (xdif<0)){
+        if(response.b.type==='PlayerBase'){
+            this.attacking=true;
+            this.lastAttacking=this.now;
             this.body.vel.x = 0;
-            this.pos.x = this.pos.x -1;
-        }else if(xdif<70 && this.facing==='left'&& xdif>0){
-            this.body.vel.x = 0;
-            }
-            
-            if(this.renderable.isCurrentAnimation("attack") && this.now-this.lastHit >= game.data.playerAttackTimer){  
+            this.pos.x = this.pos.x + 1;
+            if((this.now-this.lastHit >=1000)){
                 this.lastHit = this.now;
-                response.b.loseHealth(game.data.playerAttack);
+                response.b.loseHealth(game.data.teamArcherAttack);
             }
-    },
-    
-    collideWithEnemyCreep: function(response){
-        
+            
+        }else if (response.b.type==='PlayerEntity'){
             var xdif = this.pos.x - response.b.pos.x;
-            var ydif = this.pos.y - response.b.pos.y;
             
-            this.stopMovement(xdif);
+            this.attacking=true;
             
-            if(this.checkAttack(xdif, ydif)){
-                this.hitCreep(response);
-            };
-    },
-    
-    hitCreep: function(response){
-            if(response.b.health <= game.data.playerAttack){
-                
-                }                
-                
-                response.b.loseHealth(game.data.playerAttack);
+           
+            if(xdif>0){
+            this.pos.x = this.pos.x + 1;
+            this.body.vel.x = 0;
+            }
+            if((this.now-this.lastHit >=1000) && xdif>0){
+                this.lastHit = this.now;
+                response.b.loseHealth(game.data.teamArcherAttack);
+            }
+        }
     }
 });

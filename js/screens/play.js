@@ -38,7 +38,7 @@ game.PlayScreen = me.ScreenObject.extend({
 		me.game.world.addChild(this.HUD);
                 
                 // play the audio track
-                me.audio.playTrack("DST-InertExponent");
+                //me.audio.playTrack("DST-InertExponent");
  
 	},
 
@@ -51,7 +51,7 @@ game.PlayScreen = me.ScreenObject.extend({
 		me.game.world.removeChild(this.HUD);
                 
                 // stop the current audio track
-                me.audio.stopTrack();
+                //me.audio.stopTrack();
 	},
         
         resetPlayer: function(x, y){
