@@ -21,7 +21,7 @@ game.TeamArcher = me.Entity.extend({
         this.type = "TeamArcher";
         
         this.renderable.addAnimation("attack", [260, 261, 262, 263, 264, 265, 266, 267, 268, 269, 270, 271, 272], 80);
-        this.renderable.addAnimation("walk", [156, 157, 158, 159, 160, 161, 162, 163, 164], 80);
+        this.renderable.addAnimation("walk", [143, 144, 145, 146, 147, 148, 149, 150, 151], 80);
         this.renderable.setCurrentAnimation("walk");
         
     },
@@ -37,7 +37,7 @@ game.TeamArcher = me.Entity.extend({
         
         this.now = new Date().getTime();
         
-        this.body.vel.x -= this.body.accel.x * me.timer.tick;
+        this.body.vel.x += this.body.accel.x * me.timer.tick;
         
         me.collision.check(this, true, this.collideHandler.bind(this), true);
         
@@ -52,7 +52,7 @@ game.TeamArcher = me.Entity.extend({
     },
     
     collideHandler: function(response){
-        if(response.b.type==='PlayerBase'){
+        if(response.b.type==='EnemyBaseEntity'){
             this.attacking=true;
             this.lastAttacking=this.now;
             this.body.vel.x = 0;
@@ -62,7 +62,7 @@ game.TeamArcher = me.Entity.extend({
                 response.b.loseHealth(game.data.teamArcherAttack);
             }
             
-        }else if (response.b.type==='PlayerEntity'){
+        }else if (response.b.type==='EnemyCreep'){
             var xdif = this.pos.x - response.b.pos.x;
             
             this.attacking=true;

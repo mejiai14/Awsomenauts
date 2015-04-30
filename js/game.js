@@ -11,8 +11,12 @@ var game = {
                 enemyBaseHealth: 1,
                 playerBaseHealth: 1 ,
                 enemyCreepHealth: 10,
-                playerHealth: 10,
+                playerHealth: 20,
+                archer: 10,
+                wizard: 10,
                 enemyCreepAttack: 1,
+                archerAttack: 1,
+                wizardAttack: 1,
                 playerAttack: 1,
 //                orcBasedamage: 10,
 //                orcBaseHealth: 100,
@@ -20,8 +24,12 @@ var game = {
 //                orcBaseDefense: 0,
                 playerAttackTimer: 1000,
                 enemyCreepAttackTimer: 1000,
+                archerAttackTimer: 1000,
+                wizardAttackTimer: 1000,
                 playerMoveSpeed: 5,
                 creepMoveSpeed: 5,
+                archerMoveSpeed: 5,
+                wizardMoveSpeed: 5,
                 gameTimerManager: "",
                 heroDeathManager: "",
                 spearTimer: 15,
@@ -40,7 +48,8 @@ var game = {
                 exp4: 0,
                 win: "",
                 pausePos: "",
-                buyscreep: "",
+                buyscreen: "",
+                pausescreen: "",
                 buytext: "",
                 minimap: "",
                 miniPlayer: ""
@@ -89,6 +98,7 @@ var game = {
                 me.pool.register("HeroDeathManager", game.HeroDeathManager);
                 me.pool.register("ExperienceManager", game.ExperienceManager);
                 me.pool.register("SpendGold", game.SpendGold);
+                me.pool.register("Pause", game.Pause);
                 me.pool.register("spear", game.SpearThrow, true);
                 me.pool.register("minimap", game.MiniMap, true);
                 me.pool.register("miniplayer", game.MiniPlayerLocation, true);
@@ -103,5 +113,19 @@ var game = {
 
 		// Start the game.
 		me.state.change(me.state.MENU);
-	}
+	},
+        
+        onResetEvent: function() {
+  // play the audio track
+  me.audio.playTrack("");
+ 
+},
+
+onDestroyEvent: function() {
+ 
+ 
+  // stop the current audio track
+  me.audio.stopTrack();
+  
+}
 };

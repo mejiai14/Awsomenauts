@@ -21,10 +21,14 @@ game.PlayScreen = me.ScreenObject.extend({
                 var spendGold = me.pool.pull("SpendGold", 0, 0, {});
                 me.game.world.addChild(spendGold, 0);
                 
+                var pause = me.pool.pull("Pause", 0, 0, {});
+                me.game.world.addChild(pause, 0);
+                
                 game.data.minimap = me.pool.pull("minimap", 10, 10, {});
                 me.game.world.addChild(game.data.minimap, 30);
                 
                 me.input.bindKey(me.input.KEY.B, "Buy");
+                me.input.bindKey(me.input.KEY.P, "Pause");
                 me.input.bindKey(me.input.KEY.Q, "Skill1");
                 me.input.bindKey(me.input.KEY.W, "Skill2");
                 me.input.bindKey(me.input.KEY.E, "Skill3");
@@ -37,21 +41,15 @@ game.PlayScreen = me.ScreenObject.extend({
 		this.HUD = new game.HUD.Container();
 		me.game.world.addChild(this.HUD);
                 
-                // play the audio track
-                //me.audio.playTrack("DST-InertExponent");
- 
-	},
-
-
-	/**
+                me.audio.playTrack("BGM", false, null, 0.2);
+    },
+    /**
 	 *  action to perform when leaving this screen (state change)
 	 */
 	onDestroyEvent: function() {
 		// remove the HUD from the game world
 		me.game.world.removeChild(this.HUD);
-                
-                // stop the current audio track
-                //me.audio.stopTrack();
+                me.audio.stopTrack("");
 	},
         
         resetPlayer: function(x, y){

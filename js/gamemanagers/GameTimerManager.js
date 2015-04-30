@@ -56,7 +56,7 @@ game.GameTimerManager = Object.extend({
     archerTimerCheck: function(){
         if(Math.round(this.now/1000)%10 ===0 && (this.now - this.lastarcher >=1000)){
             this.lastarcher = this.now;
-        var archer = me.pool.pull("archer", 1000, 0, {});
+        var archer = me.pool.pull("archer", 10, 0, {});
             me.game.world.addChild(archer, 5);
         }
     }

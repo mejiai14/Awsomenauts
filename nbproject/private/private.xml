@@ -3,11 +3,14 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/xampp/htdocs/Ismael'sAwsomenauts/js/gamemanagers/GameTimerManager.js</file>
-            <file>file:/C:/xampp/htdocs/Ismael'sAwsomenauts/js/entities/EnemyWizard.js</file>
-            <file>file:/C:/xampp/htdocs/Ismael'sAwsomenauts/js/entities/EnemyCreep.js</file>
-            <file>file:/C:/xampp/htdocs/Ismael'sAwsomenauts/data/img/archer.png</file>
-            <file>file:/C:/xampp/htdocs/Ismael'sAwsomenauts/js/entities/TeamArcher.js</file>
+            <file>file:/C:/xampp/htdocs/Ismael'sAwsomenauts/js/screens/Pause.js</file>
+            <file>file:/C:/xampp/htdocs/Ismael'sAwsomenauts/js/screens/play.js</file>
+            <file>file:/C:/xampp/htdocs/Ismael'sAwsomenauts/data/img/</file>
+            <file>file:/C:/xampp/htdocs/Ismael'sAwsomenauts/js/resources.js</file>
+            <file>file:/C:/xampp/htdocs/Ismael'sAwsomenauts/js/screens/spendExp.js</file>
+            <file>file:/C:/xampp/htdocs/Ismael'sAwsomenauts/js/game.js</file>
+            <file>file:/C:/xampp/htdocs/Ismael'sAwsomenauts/index.php</file>
+            <file>file:/C:/xampp/htdocs/Ismael'sAwsomenauts/js/gamemanagers/SpendGold.js</file>
         </group>
     </open-files>
 </project-private>
