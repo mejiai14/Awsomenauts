@@ -4,6 +4,7 @@ game.HeroDeathManager = Object.extend({
     },
     
     update: function(){
+        //Updates when player dies, respawns the player, & keeps track of player
         if(game.data.player.dead){
             me.game.world.removeChild(game.data.player);
             me.state.current().resetPlayer(10, 0);

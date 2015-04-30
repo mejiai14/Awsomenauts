@@ -33,6 +33,7 @@ game.SpearThrow = me.Entity.extend({
     },
     
     collideHandler: function(response){
+        //Allows the spear to destroy the base & kill enemies
         if(response.b.type==='EnemyBase' || response.b.type==='EnemyCreep'){
                 response.b.loseHealth(this.attack);
                 me.game.world.removeChild(this);

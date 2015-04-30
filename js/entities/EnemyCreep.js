@@ -51,6 +51,7 @@ game.EnemyCreep = me.Entity.extend({
     },
     
     collideHandler: function(response){
+        //Allows the creep to attack the base & take the base's health
         if(response.b.type==='PlayerBase'){
             this.attacking=true;
             this.lastAttacking=this.now;
@@ -61,7 +62,10 @@ game.EnemyCreep = me.Entity.extend({
                 response.b.loseHealth(game.data.enemyCreepAttack);
             }
             
+            //Allows the creep to kill the player & archer
         }else if (response.b.type==='PlayerEntity'){
+            var xdif = this.pos.x - response.b.pos.x;
+        }else if (response.b.type==='TeamArcher'){
             var xdif = this.pos.x - response.b.pos.x;
             
             this.attacking=true;

@@ -114,6 +114,7 @@ game.PlayerEntity = me.Entity.extend({
     },
     
     throwSpear: function(){
+        //Calls on the spearthrow function to throw the spear when ability 3 is bought
         console.log(this.now + " " + this.lastSpear + " " + game.data.ability3);
         if((this.now-this.lastSpear) >= game.data.spearTimer*1000 && game.data.ability3 > 0){
             console.log("thrown");

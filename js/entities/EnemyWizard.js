@@ -64,6 +64,8 @@ game.EnemyWizard = me.Entity.extend({
             
         }else if (response.b.type==='PlayerEntity'){
             var xdif = this.pos.x - response.b.pos.x;
+        }else if (response.b.type==='TeamArcher'){
+            var xdif = this.pos.x - response.b.pos.x;
             
             this.attacking=true;
             

@@ -39,6 +39,7 @@ game.GameTimerManager = Object.extend({
         
     if(Math.round(this.now/1000)%10 ===0 && (this.now - this.lastcreep >=1000)){
             this.lastcreep = this.now;
+            //Sets the creep on the right side
             var creepe = me.pool.pull("EnemyCreep", 1000, 0, {});
             me.game.world.addChild(creepe, 5);
                 
@@ -48,6 +49,7 @@ game.GameTimerManager = Object.extend({
     wizardTimerCheck: function(){
         if(Math.round(this.now/1000)%10 ===0 && (this.now - this.lastwizard >=1000)){
             this.lastwizard = this.now;
+            //Sets the wizard on the right side
         var wizard = me.pool.pull("wizard", 1000, 0, {});
             me.game.world.addChild(wizard, 5);
         }
@@ -56,6 +58,7 @@ game.GameTimerManager = Object.extend({
     archerTimerCheck: function(){
         if(Math.round(this.now/1000)%10 ===0 && (this.now - this.lastarcher >=1000)){
             this.lastarcher = this.now;
+            //Sets the archer on the left side
         var archer = me.pool.pull("archer", 10, 0, {});
             me.game.world.addChild(archer, 5);
         }

@@ -64,6 +64,10 @@ game.TeamArcher = me.Entity.extend({
             
         }else if (response.b.type==='EnemyCreep'){
             var xdif = this.pos.x - response.b.pos.x;
+        }else if(response.b.type==='EnemyWizard'){
+            var xdif = this.pos.x - response.b.pos.x;
+        }
+    
             
             this.attacking=true;
             
@@ -78,4 +82,4 @@ game.TeamArcher = me.Entity.extend({
             }
         }
     }
-});
+);

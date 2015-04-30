@@ -5,22 +5,25 @@ game.SpendExp = me.ScreenObject.extend({
 	onResetEvent: function() {	
 		me.game.world.addChild(new me.Sprite(0, 0, me.loader.getImage('exp-screen')), -10); // TODO
                 
+                //When the keys are pressed, they will buy said skill
                 me.input.bindKey(me.input.KEY.F1, "F1");
                 me.input.bindKey(me.input.KEY.F2, "F2");
                 me.input.bindKey(me.input.KEY.F3, "F3");
                 me.input.bindKey(me.input.KEY.F4, "F4");
-                me.input.bindKey(me.input.KEY.F5, "F5");
+                me.input.bindKey(me.input.KEY.F5, "F5");var exp1cost = ((Number(game.data.exp1) + 1) * 10);
+                //Multiplies after each buy
                 var exp1cost = ((Number(game.data.exp1) + 1) * 10);
                 
                 me.game.world.addChild(new (me.Renderable.extend({
                     init: function(){
-                        this._super(me.Renderable, 'init', [270, 240, 300, 50]);
+                        this._super(me.Renderable, 'init', [10, 10, 300, 50]);
                         this.font = new me.Font("Arial", 46, "white");
                     },
                     
                     draw: function(renderer){
+                        //Allows the buyer to buy said skill when key is pressed
                         this.font.draw(renderer.getContext(), "Press F1-F4 to Buy, F5 to Skip", this.pos.x, this.pos.y);
-                        this.font.draw(renderer.getContext(), "Current Exp:" + game.data.exp.toString(), this.pos.x + 100, this.pos.y + 50);
+                        this.font.draw(renderer.getContext(), "Current Exp: " + game.data.exp.toString(), this.pos.x + 100, this.pos.y + 50);
                         this.font.draw(renderer.getContext(), "F1: Increase Gold Production Current Level: " + game.data.exp1.toString() + "Cost: " + exp1cost, this.pos.x, this.pos.y + 100);
                         this.font.draw(renderer.getContext(), "F2: Add Starting Gold: " + game.data.exp2.toString() + "Cost: " + exp2cost, this.pos.x, this.pos.y + 150);
                         this.font.draw(renderer.getContext(), "F3: Increase Attack Damage: " + game.data.exp3.toString() + "Cost: " + exp3cost, this.pos.x, this.pos.y + 200);

@@ -11,6 +11,7 @@ game.SpendGold = Object.extend({
     update: function(){
         this.now = new Date().getTime();
         
+        //When the buy key is pressed, it takes you to the buy screen & if pressed again will exit the buy screen
         if(me.input.isKeyPressed("Buy")){
             this.lastBuy = this.now;
             if(!this.buying){
@@ -26,6 +27,7 @@ game.SpendGold = Object.extend({
     },
     
     startBuying: function(){
+        //When buy is pressed, takes you to the buy screen & allows you to buy the skills 
         this.buying = true;
         me.state.pause(me.state.PLAY);
         game.data.pausePos = me.game.viewport.localToWorld(0, 0);
@@ -53,6 +55,7 @@ game.SpendGold = Object.extend({
                     },
                     
                     draw: function(renderer){
+                        //Allows you to call on these functions when in the buy screen & if keys are pressed
                         this.font.draw(renderer.getContext(), "Press F1-F6 to Buy, B to  Exit. Current Gold: " + game.data.gold, this.pos.x, this.pos.y);
                         this.font.draw(renderer.getContext(), "Skil 1: Increase Damage . Current Level: " + game.data.skill1 + " Cost: "  + ((game.data.skill1+1)*10), this.pos.x, this.pos.y+ 50);
                         this.font.draw(renderer.getContext(), "Skill 2: Run Faster! Current Level: " + game.data.skill2 + " Cost: "  + ((game.data.skill2+1)*10), this.pos.x, this.pos.y+ 100);
